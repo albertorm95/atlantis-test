@@ -7,7 +7,7 @@ projects:
 
 # Control Plane
 - name: terraform-aws-baseline-iam
-  dir: example
+  dir: .
   autoplan:
     when_modified: ["example/**/*.tf", "example/basic"]
     enabled: true
