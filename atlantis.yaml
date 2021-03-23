@@ -19,6 +19,6 @@ projects:
   autoplan:
     when_modified: ["**/*.tf", "*.tf", "!example"]
     enabled: true
-  workflow: default-validator-plan
+  workflow: default
   terraform_version: v0.12.26
   apply_requirements: [mergeable, approved]
