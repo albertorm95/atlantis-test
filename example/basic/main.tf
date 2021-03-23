@@ -5,7 +5,7 @@ provider "aws" {
 locals {
   user_data = <<EOF
 #!/bin/bash
-echo "Hellos Terraform!"
+echo "Hello Terraform!"
 EOF
 }
 
