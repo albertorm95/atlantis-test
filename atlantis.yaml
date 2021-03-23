@@ -7,9 +7,9 @@ projects:
 
 # Control Plane
 - name: terraform-aws-baseline-iam
-  dir: .
+  dir: example
   autoplan:
-    when_modified: ["example/**/*.tf", "example/basic"]
+    when_modified: ["**/*.tf"]
     enabled: true
   workflow: default-validator-plan
   terraform_version: v0.12.26
