@@ -1,32 +1,34 @@
-# version: 3
+version: 3
 
-# #
-# # Projects
-# #
-# projects:
+#
+# Projects
+#
+projects:
 
-# # Control Plane
-# # - name: example-project
-# #   dir: example
-# #   autoplan:
-# #     when_modified: ["**/*.tf", "*.tf"]
-# #     enabled: true
-# #   workflow: tflint_tfsec_plan
-# #   terraform_version: v0.12.26
-# #   apply_requirements: [mergeable, approved]
-# - name: module-project
-#   dir: .
-#   autoplan:
-#     when_modified: ["**/*.tf", "*.tf", "!example"]
-#     enabled: true
-#   workflow: tflint_tfsec
-#   terraform_version: v0.12.26
-#   apply_requirements: [mergeable, approved]
-# # - name: example-project
-# #   dir: .
-# #   autoplan:
-# #     when_modified: ["example/**/*.tf"]
-# #     enabled: true
-# #   workflow: tflint_tfsec_plan
-# #   terraform_version: v0.12.26
-# #   apply_requirements: [mergeable, approved]
+# Control Plane
+- name: example-basic
+  dir: example/basic
+  autoplan:
+    when_modified: ["**/*.tf", "*.tf"]
+    enabled: true
+  workflow: tflint_tfsec_plan
+  terraform_version: v0.12.26
+  apply_requirements: [mergeable, approved]
+
+- name: example-volume-attachment
+  dir: example/volume-attachment
+  autoplan:
+    when_modified: ["**/*.tf", "*.tf"]
+    enabled: true
+  workflow: tflint_tfsec_plan
+  terraform_version: v0.12.26
+  apply_requirements: [mergeable, approved]
+
+- name: module-project
+  dir: .
+  autoplan:
+    when_modified: ["**/*.tf", "*.tf", "!example"]
+    enabled: true
+  workflow: tflint_tfsec
+  terraform_version: v0.12.26
+  apply_requirements: [mergeable, approved]
