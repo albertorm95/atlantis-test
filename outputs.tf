@@ -1,5 +1,5 @@
 output "id" {
-  description = "List of IDs of instances"
+  description = "List of IDs of nstances"
   value       = aws_instance.this.*.id
 }
 
