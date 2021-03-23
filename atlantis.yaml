@@ -14,7 +14,7 @@ projects:
   workflow: default-validator-plan
   terraform_version: v0.12.26
   apply_requirements: [mergeable, approved]
-- name: terraform-aws-baseline-iam
+- name: terraform-aws-baseline-iam2
   dir: .
   autoplan:
     when_modified: ["**/*.tf", "*.tf", "!example"]
