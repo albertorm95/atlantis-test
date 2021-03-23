@@ -6,14 +6,15 @@ version: 3
 projects:
 
 # Control Plane
-- name: terraform-aws-baseline-iam
-  autoplan:
-    when_modified: ["**/*.tf", "*.tf"]
-    enabled: true
-  workflow: default-validator-plan
-  terraform_version: v0.12.26
-  apply_requirements: [mergeable, approved]
-- name: terraform-aws-baseline-iam2
+# - name: example-project
+#   dir: example
+#   autoplan:
+#     when_modified: ["**/*.tf", "*.tf"]
+#     enabled: true
+#   workflow: default-validator-plan
+#   terraform_version: v0.12.26
+#   apply_requirements: [mergeable, approved]
+- name: module-project
   dir: .
   autoplan:
     when_modified: ["**/*.tf", "*.tf", "!example"]
