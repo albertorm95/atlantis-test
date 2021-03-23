@@ -5,7 +5,7 @@ provider "aws" {
 locals {
   user_data = <<EOF
 #!/bin/bash
-echo "Hello sTersraform!"
+echo "Hello sTersrsaform!"
 EOF
 }
 
