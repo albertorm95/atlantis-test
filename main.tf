@@ -1,3 +1,5 @@
-resource "null_resource" "cluster" {
-  
+resource "null_resource" "example2" {
+  provisioner "local-exec" {
+    command = "echo test"
+  }
 }
