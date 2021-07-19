@@ -1,7 +1,11 @@
 variable "env" {
   type = "string"
 }
+variable "byte_length" {
+  type = number
+}
 
 resource "random_id" "suffix" {
-  byte_length = 4
+  prefix = var.env
+  byte_length = var.byte_length
 }
