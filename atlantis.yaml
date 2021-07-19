@@ -34,8 +34,6 @@ workflows:
         - env:
             name: ENV_TFVARS
             command: 'echo "vars/${ENV_NAME}.tfvars"'
-        - run: echo Running tflint; tflint --no-color
-        - run: echo Running tfsec; tfsec --no-color --exclude-downloaded-modules
         - run: 'mkdir -p ".terraform.${ENV_NAME}"'
         - run: 'ln -sf ".terraform.${ENV_NAME}" .terraform'
         - init:
