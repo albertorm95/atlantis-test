@@ -4,9 +4,6 @@ variable "env" {
 variable "byte_length" {
   type = number
 }
-variable "create_before_destroy" {
-  type = bool
-}
 
 resource "random_id" "suffix" {
   prefix = var.env
