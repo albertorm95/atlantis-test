@@ -1,5 +1,5 @@
 variable "env" {
-  type = "string"
+  type = string
 }
 variable "byte_length" {
   type = number
