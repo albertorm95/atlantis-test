@@ -1,4 +1,4 @@
-variable "evn" {
+variable "env" {
   type = "string"
 }
 
