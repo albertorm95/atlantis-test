@@ -1,14 +1,5 @@
-resource "null_resource" "example2" {
+resource "null_resource" "example" {
   provisioner "local-exec" {
-<<<<<<< Updated upstream
-    command = "echo tess"
-=======
-    command = "Get-Date > completed.txt"
-    interpreter = ["PowerShell", "-Command"]
->>>>>>> Stashed changes
+    command = "echo ${var.env}"
   }
-}
-
-module "test" {
-  source = "./module"
 }
