@@ -1,0 +1,52 @@
+version: 3
+
+#
+# Projects
+#
+projects:
+  - name: atlantis-example-dev
+    dir: example
+    autoplan:
+      when_modified: ['../**/*.tf', '*.tfvars', 'vars/dev.tfvars']
+      enabled: true
+    workflow: tflint_tfsec_plan_example_envs
+    terraform_version: v0.13.7
+    apply_requirements: [mergeable, approved]
+  - name: atlantis-example-live
+    dir: example
+    autoplan:
+      when_modified: ['../**/*.tf', '*.tfvars', 'vars/live.tfvars']
+      enabled: true
+    workflow: tflint_tfsec_plan_example_envs
+    terraform_version: v0.13.7
+    apply_requirements: [mergeable, approved]
+
+#
+# Workflows
+#
+workflows:
+  tflint_tfsec_plan_example_envs:
+    plan:
+      steps:
+        - env:
+            name: ENV_NAME
+            command: 'echo "${PROJECT_NAME##*-example-}"'
+        - env:
+            name: ENV_TFVARS
+            command: 'echo "vars/${ENV_NAME}.tfvars"'
+        - run: echo Running tflint; tflint --no-color
+        - run: echo Running tfsec; tfsec --no-color --exclude-downloaded-modules
+        - run: 'mkdir -p ".terraform.${ENV_NAME}"'
+        - run: 'ln -sf ".terraform.${ENV_NAME}" .terraform'
+        - init:
+            extra_args: ['-backend-config=backends/${ENV_NAME}.tf', -reconfigure]
+        - plan:
+            extra_args: [-var-file, example.tfvars, -var-file, '${ENV_TFVARS}']
+    apply:
+      steps:
+        - env:
+            name: ENV_NAME
+            command: 'echo "${PROJECT_NAME##*-example-}"'
+        - run: 'mkdir -p ".terraform.${ENV_NAME}"'
+        - run: 'ln -sf ".terraform.${ENV_NAME}" .terraform'
+        - apply
