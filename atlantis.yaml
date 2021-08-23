@@ -28,6 +28,8 @@ workflows:
   tflint_tfsec_plan_example_envs:
     plan:
       steps:
+        - run: 'env'
+        - run: 'export'
         - env:
             name: ENV_NAME
             command: 'echo "${PROJECT_NAME##*-example-}"'
