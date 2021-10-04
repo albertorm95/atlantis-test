@@ -28,7 +28,7 @@ workflows:
   tflint_tfsec_plan_example_envs:
     plan:
       steps:
-        - run: 'env'
+        - run: 'env | sort'
         - env:
             name: TEST
             command: 'echo this is a test'
@@ -44,7 +44,7 @@ workflows:
         - env:
             name: ENV_TFVARS
             command: 'echo "vars/${ENV_NAME}.tfvars"'
-        - run: 'env'
+        - run: 'env | sort'
     apply:
       steps:
-        - run: 'env'
+        - run: 'env | sort'
