@@ -29,24 +29,22 @@ workflows:
     plan:
       steps:
         - run: 'env'
-        - run: 'export'
+        - env:
+            name: TEST
+            command: 'echo this is a test'
+        - env:
+            name: ATLANTIS_GH_TOKEN
+            command: echo "(sensitive)"
+        - env:
+            name: ATLANTIS_GH_WEBHOOK_SECRET
+            command: echo "(sensitive)"
         - env:
             name: ENV_NAME
-            command: 'echo "${PROJECT_NAME##*-example-}"'
+            command: 'echo ${PROJECT_NAME##*-example-}'
         - env:
             name: ENV_TFVARS
             command: 'echo "vars/${ENV_NAME}.tfvars"'
-        - run: 'mkdir -p ".terraform.${ENV_NAME}"'
-        - run: 'ln -sf ".terraform.${ENV_NAME}" .terraform'
-        - init:
-            extra_args: ['-backend-config=backends/${ENV_NAME}.tf', -reconfigure]
-        - plan:
-            extra_args: [-var-file, example.tfvars, -var-file, '${ENV_TFVARS}']
+        - run: 'env'
     apply:
       steps:
-        - env:
-            name: ENV_NAME
-            command: 'echo "${PROJECT_NAME##*-example-}"'
-        - run: 'mkdir -p ".terraform.${ENV_NAME}"'
-        - run: 'ln -sf ".terraform.${ENV_NAME}" .terraform'
-        - apply
+        - run: 'env'
