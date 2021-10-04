@@ -11,7 +11,7 @@ projects:
       enabled: true
     workflow: tflint_tfsec_plan_example_envs
     terraform_version: v0.13.7
-    apply_requirements: [mergeable, approved]
+    apply_requirements: [mergeable]
   - name: atlantis-example-live
     dir: example
     autoplan:
@@ -19,7 +19,7 @@ projects:
       enabled: true
     workflow: tflint_tfsec_plan_example_envs
     terraform_version: v0.13.7
-    apply_requirements: [mergeable, approved]
+    apply_requirements: [mergeable]
 
 #
 # Workflows
