@@ -3,7 +3,7 @@
 This repo is for testing Atlantis
 
 export DEFAULT_CONFTEST_VERSION=0.32.1
-export NGROK_URL=""
+export NGROK_URL="https://27b6-189-150-212-90.ngrok.io"
 export GH_USERNAME=albertorm95
 export WEBHOOK_SECRET=test
 export REPO_ALLOWLIST="github.com/albertorm95/atlantis-test"
