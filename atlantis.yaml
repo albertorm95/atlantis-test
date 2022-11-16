@@ -9,7 +9,6 @@ projects:
     autoplan:
       when_modified: ['../**/*.tf', '*.tfvars', 'vars/dev.tfvars']
       enabled: true
-    workflow: tflint_tfsec_plan_example_envs
     terraform_version: v0.13.7
     apply_requirements: [mergeable]
   - name: atlantis-example-live
@@ -17,34 +16,5 @@ projects:
     autoplan:
       when_modified: ['../**/*.tf', '*.tfvars', 'vars/live.tfvars']
       enabled: true
-    workflow: tflint_tfsec_plan_example_envs
     terraform_version: v0.13.7
     apply_requirements: [mergeable]
-
-#
-# Workflows
-#
-workflows:
-  tflint_tfsec_plan_example_envs:
-    plan:
-      steps:
-        - run: 'env | sort'
-        - env:
-            name: TEST
-            command: 'echo this is a test'
-        - env:
-            name: ATLANTIS_GH_TOKEN
-            command: echo "(sensitive)"
-        - env:
-            name: ATLANTIS_GH_WEBHOOK_SECRET
-            command: echo "(sensitive)"
-        - env:
-            name: ENV_NAME
-            command: 'echo ${PROJECT_NAME##*-example-}'
-        - env:
-            name: ENV_TFVARS
-            command: 'echo "vars/${ENV_NAME}.tfvars"'
-        - run: 'env | sort'
-    apply:
-      steps:
-        - run: 'env | sort'
