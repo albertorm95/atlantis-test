@@ -9,12 +9,12 @@ projects:
     autoplan:
       when_modified: ['../**/*.tf', '*.tfvars', 'vars/dev.tfvars']
       enabled: true
-    terraform_version: v0.13.7
+    terraform_version: v1.3.4
     apply_requirements: [mergeable]
   - name: atlantis-example-live
     dir: example
     autoplan:
       when_modified: ['../**/*.tf', '*.tfvars', 'vars/live.tfvars']
       enabled: true
-    terraform_version: v0.13.7
+    terraform_version: v1.3.4
     apply_requirements: [mergeable]
