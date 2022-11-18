@@ -6,7 +6,6 @@ variable "byte_length" {
 }
 
 resource "random_id" "suffix" {
-  prefix = var.env
+  prefix      = var.env
   byte_length = var.byte_length
-
 }
