@@ -1,5 +1,5 @@
 module "test_live" {
   source      = "../"
-  env         = "tes2t"
+  env         = "2"
   byte_length = 5
 }
