@@ -1,9 +1,11 @@
-variable "evn" {
-  type = "string"
+variable "env" {
+  type = string
+}
+variable "byte_length" {
+  type = number
 }
 
-resource "null_resource" "example" {
-  provisioner "local-exec" {
-    command = "echo ${var.env}"
-  }
+resource "random_id" "suffix" {
+  prefix      = var.env
+  byte_length = var.byte_length
 }

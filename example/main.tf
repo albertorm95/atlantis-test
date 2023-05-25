@@ -1,8 +1,5 @@
-variable "evn" {
-  type = "string"
-}
-
-module "test" {
-    source = "../"
-    env = var.env
+module "test_live" {
+  source      = "../"
+  env         = "3"
+  byte_length = 5
 }
