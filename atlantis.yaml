@@ -9,5 +9,5 @@ projects:
     autoplan:
       when_modified: ['../**/*.tf', '*.tfvars', 'vars/live.tfvars']
       enabled: true
-    terraform_version: v1.3.4
+    terraform_version: v1.4.6
     apply_requirements: [mergeable]
