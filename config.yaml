@@ -1,0 +1,11 @@
+repos:
+  - id: '/.*/'
+metrics:
+  prometheus:
+    endpoint: /metrics
+policies:
+  conftest_version: 0.38.0
+  owners:
+    users:
+      - albertorm95
+  policy_sets: []
